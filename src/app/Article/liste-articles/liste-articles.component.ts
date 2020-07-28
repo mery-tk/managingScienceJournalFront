@@ -24,11 +24,19 @@ export class ListeArticlesComponent implements OnInit {
   }
 
   modifier(idArticle: any) {
-
+    this.router.navigateByUrl("articles/"+idArticle);
   }
 
   supprimer(article: Article) {
-
+    const confirm = window.confirm('etes-vous sur de vouloir supprimer cet Article??');
+    if (confirm == true) {
+      this.articleService.daleteArticle(article.idArticle)
+        .subscribe(data => {
+          this.articles.splice(this.articles.indexOf(article), 1);
+        }, error => {
+          console.log(error);
+        });
+    }
   }
 
   goToPage(i: number) {

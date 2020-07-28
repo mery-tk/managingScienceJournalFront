@@ -10,11 +10,11 @@ export class ArticleService {
     return this.http.get('http://localhost:8080/articles');
   }
 
-  addArticle(article: Article) {
+  addArticle(article: FormData) {
     return this.http.post('http://localhost:8080/articles', article);
   }
 
-  updateArticle(idArticle: number, article: Article) {
+  updateArticle(idArticle: number, article: FormData) {
     return this.http.put('http://localhost:8080/articles/'+idArticle, article);
   }
 
@@ -24,6 +24,10 @@ export class ArticleService {
 
   getArticleById(idArticle: number) {
     return this.http.get('http://localhost:8080/articles/'+idArticle);
+  }
+
+  getFile(idArticle: number) {
+    return this.http.get('http://localhost:8080/article/'+idArticle, {responseType: "blob"});
   }
 
 }

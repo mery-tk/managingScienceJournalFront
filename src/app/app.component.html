@@ -1,14 +1,3 @@
-<mat-toolbar color="primary" class="mat-elevation-z8">
-  <span>Gestion Revu</span>
-  <div class="spacer"></div>
-  <a mat-button routerLink="/home">Home</a>
-  <a mat-button [matMenuTriggerFor]="Articles">Articles</a>
-  <a mat-raised-button color="accent">Logout</a>
-</mat-toolbar>
-<mat-menu #Articles=matMenu>
-  <button  routerLink="/articles"  mat-menu-item>Liste Articles</button>
-  <button  routerLink="/articlesRecents"  mat-menu-item>Articles Recentes</button>
-  <button  routerLink="/articlesEvaluation"  mat-menu-item>Articles En cours d'Evaluation</button>
-</mat-menu>
 <router-outlet></router-outlet>
+
 
