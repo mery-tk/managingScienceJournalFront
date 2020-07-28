@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ListeArticlesComponent} from './Auteur/liste-articles/liste-articles.component';
+import {ListeArticlesComponent} from './Article/liste-articles/liste-articles.component';
 import {AppComponent} from './app.component';
 
 
