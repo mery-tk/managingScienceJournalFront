@@ -7,10 +7,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
+import { ListeArticlesComponent } from './Auteur/liste-articles/liste-articles.component';
+import {ArticleService} from './services/article.service';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListeArticlesComponent
   ],
   imports: [
     BrowserModule,
@@ -18,9 +22,13 @@ import {MatButtonModule} from "@angular/material/button";
     MatToolbarModule,
     BrowserAnimationsModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ArticleService,
+    HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
