@@ -25,6 +25,6 @@ export class ArticlesAEvaluerComponent implements OnInit {
   }
 
   goDetails(idArticle: number) {
-    this.router.navigateByUrl("articles/"+idArticle+"/details");
+    this.router.navigateByUrl("articlesAEvaluer/"+idArticle+"/details");
   }
 }

@@ -12,6 +12,7 @@
   <button  routerLink="/articlesAEvaluer"  mat-menu-item>Articles à Evaluer</button>
 </mat-menu>
 
+
 <div class="col-sm-11 mt-3 ml-5">
   <div class="card ">
     <div class="card-header bg-dark">
@@ -19,49 +20,40 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-      <div class="card-body">
-        <div style="float: left; ">
+    <div class="card-body">
+      <div style="float: left; ">
         <a (click)="getFile()" onclick="document.getElementById('id01').style.display='block'">
           <img src="assets/imgs/PDF_file_icon.svg" alt="{{article.titre}}"/>
           <p></p>
           <label class="size24 ml-5 text-danger">{{article.contenu}}</label>
         </a>
-        </div>
-        <div style="float: left; width: 75%" class="ml-5">
-          <table class="table table-borderless">
-            <tr>
-              <td class="size24 font-weight-bold">Titre: </td>
-              <td class="size24">{{article.titre}}</td>
-            </tr>
-            <tr>
-              <td class="size24 font-weight-bold">Affiliations: </td>
-              <td class="size24">{{article.affiliations}}</td>
-            </tr>
-            <tr>
-              <td class="size24 font-weight-bold">Résumé :</td>
-              <td class="size24">{{article.resume}}</td>
-            </tr>
-            <tr>
-              <td class="size24 font-weight-bold">Mots Clés :</td>
-              <td class="size24">{{article.motCle}}</td>
-            </tr>
-            <tr>
-              <td class="size24 font-weight-bold">Auteur</td>
-              <td class="size24">{{auteur.nom}} {{auteur.prenom}}</td>
-            </tr>
-            <tr>
-              <td class="size24 font-weight-bold">Co-auteurs</td>
-              <td class="size24">
-                <p *ngFor="let a of co_auteurs">{{a.nom}} {{a.prenom}}</p>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="spacer card-footer" style="width: 100%; float: left">
-          <button class="btn btn-dark " style="width: 100%;"><strong class="size24">Suivre Etat</strong></button>
-        </div>
       </div>
-      <!-- /.card-body -->
+      <div style="float: left; width: 75%" class="ml-5">
+        <table class="table table-borderless">
+          <tr>
+            <td class="size24 font-weight-bold">Titre: </td>
+            <td class="size24">{{article.titre}}</td>
+          </tr>
+          <tr>
+            <td class="size24 font-weight-bold">Affiliations: </td>
+            <td class="size24">{{article.affiliations}}</td>
+          </tr>
+          <tr>
+            <td class="size24 font-weight-bold">Résumé :</td>
+            <td class="size24">{{article.resume}}</td>
+          </tr>
+          <tr>
+            <td class="size24 font-weight-bold">Mots Clés :</td>
+            <td class="size24">{{article.motCle}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="spacer card-footer" style="width: 100%; float: left">
+        <button class="btn btn-dark " style="width: 100%;"><strong class="size24">Evaluer</strong></button>
+      </div>
+    </div>
+    <!-- /.card-body -->
   </div>
 </div>
 

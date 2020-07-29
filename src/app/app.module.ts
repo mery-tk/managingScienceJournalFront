@@ -20,6 +20,7 @@ import { MesArticlesComponent } from './Auteur/mes-articles/mes-articles.compone
 import { ModifierArticleComponent } from './Article/modifier-article/modifier-article.component';
 import { ArticlesAEvaluerComponent } from './Auteur/articles-aevaluer/articles-aevaluer.component';
 import {RefereeService} from './services/referee.service';
+import { DetailsArticlesAEvaluerComponent } from './Auteur/details-articles-aevaluer/details-articles-aevaluer.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {RefereeService} from './services/referee.service';
     AjouterArticleComponent,
     MesArticlesComponent,
     ModifierArticleComponent,
-    ArticlesAEvaluerComponent
+    ArticlesAEvaluerComponent,
+    DetailsArticlesAEvaluerComponent,
   ],
   imports: [
     BrowserModule,
