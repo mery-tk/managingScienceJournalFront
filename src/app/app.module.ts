@@ -18,6 +18,8 @@ import {NgxExtendedPdfViewerModule} from 'ngx-extended-pdf-viewer';
 import {AuteurService} from './services/auteur.service';
 import { MesArticlesComponent } from './Auteur/mes-articles/mes-articles.component';
 import { ModifierArticleComponent } from './Article/modifier-article/modifier-article.component';
+import { ArticlesAEvaluerComponent } from './Auteur/articles-aevaluer/articles-aevaluer.component';
+import {RefereeService} from './services/referee.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { ModifierArticleComponent } from './Article/modifier-article/modifier-ar
     DetailsArticleComponent,
     AjouterArticleComponent,
     MesArticlesComponent,
-    ModifierArticleComponent
+    ModifierArticleComponent,
+    ArticlesAEvaluerComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { ModifierArticleComponent } from './Article/modifier-article/modifier-ar
   providers: [
     ArticleService,
     HttpClient,
-    AuteurService
+    AuteurService,
+    RefereeService
   ],
   bootstrap: [AppComponent]
 })

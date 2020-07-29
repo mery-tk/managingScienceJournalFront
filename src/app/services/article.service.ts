@@ -30,4 +30,14 @@ export class ArticleService {
     return this.http.get('http://localhost:8080/article/'+idArticle, {responseType: "blob"});
   }
 
+
+  getAuteursArticle(idArticle: number) {
+    return this.http.get('http://localhost:8080/articles/'+idArticle+'/auteurs');
+  }
+
+  getCorrespondanceAuteurArticle(idArticle: number, idAuteur: number) {
+    return this.http.get('http://localhost:8080/correspondance/'+idArticle+'/'+idAuteur);
+  }
+
+
 }

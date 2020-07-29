@@ -53,14 +53,17 @@
         </div>
         <div>
           <mat-form-field class="form-group ml-2 mr-3" style="width: 99%">
-            <mat-label class="ml-3">Auteurs: </mat-label>
-            <mat-select placeholder="selectionner un auteur" class="form-control" multiple  name="auteurs" ngModel>
-              <mat-optgroup label="Auteur correspondant">
+            <mat-label class="ml-3">Auteur Correspondant: </mat-label>
+            <mat-select placeholder="selectionner un auteur" class="form-control"  name="auteurCorrespondant" ngModel>
                 <mat-option *ngFor="let a of auteurs" [value]="a">{{a.nom}} {{a.prenom}}</mat-option>
-              </mat-optgroup>
-              <mat-optgroup label="Co-auteurs">
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="form-group ml-2 mr-3" style="width: 99%">
+            <mat-label class="ml-3">Co-Auteurs: </mat-label>
+            <mat-select placeholder="selectionner un auteur" class="form-control" multiple  name="co_auters" ngModel>
                 <mat-option *ngFor="let a of auteurs" [value]="a">{{a.nom}} {{a.prenom}}</mat-option>
-              </mat-optgroup>
             </mat-select>
           </mat-form-field>
         </div>

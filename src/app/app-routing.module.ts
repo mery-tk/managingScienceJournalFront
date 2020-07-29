@@ -6,6 +6,7 @@ import {DetailsArticleComponent} from './Article/details-article/details-article
 import {AjouterArticleComponent} from './Article/ajouter-article/ajouter-article.component';
 import {MesArticlesComponent} from './Auteur/mes-articles/mes-articles.component';
 import {ModifierArticleComponent} from './Article/modifier-article/modifier-article.component';
+import {ArticlesAEvaluerComponent} from './Auteur/articles-aevaluer/articles-aevaluer.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path: 'articles/:idArticle', component: ModifierArticleComponent},
   {path: 'addArticle', component: AjouterArticleComponent},
   {path: 'mesArticles', component: MesArticlesComponent},
-  //{path: 'articlesAEvaluer'}
+  {path: 'articlesAEvaluer', component: ArticlesAEvaluerComponent}
 ];
 
 @NgModule({

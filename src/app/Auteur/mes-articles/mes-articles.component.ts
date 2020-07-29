@@ -20,7 +20,7 @@ export class MesArticlesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.auteurService.getArticleAuteur(2).subscribe((data: any) => {
+    this.auteurService.getArticleAuteur(1).subscribe((data: any) => {
       this.articles = data as Array<Article>;
       console.log(data);
     }, error => console.log(error));

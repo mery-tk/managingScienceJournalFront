@@ -45,6 +45,18 @@
               <td class="size24 font-weight-bold">Mots Clés :</td>
               <td class="size24">{{article.motCle}}</td>
             </tr>
+            <tr>
+              <td class="size24 font-weight-bold">Auteur</td>
+              <td class="size24">{{auteur.nom}} {{auteur.prenom}}</td>
+            </tr>
+            <tr>
+              <td class="size24 font-weight-bold">Co-auteurs</td>
+              <td class="size24">
+                <p *ngFor="let a of co_auteurs">{{a.nom}} {{a.prenom}}</p>
+              </td>
+            </tr>
+
+
           </table>
         </div>
       </div>
