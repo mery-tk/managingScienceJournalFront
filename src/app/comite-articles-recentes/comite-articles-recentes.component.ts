@@ -22,7 +22,7 @@ export class ComiteArticlesRecentesComponent implements OnInit {
   ngOnInit(): void {
     this.articleService.getArticles().subscribe( (data: any) => {
       for(let a of data){
-        if(a.etat=="Recente"){
+        if(a.etat=="recent"){
           this.articles1.push(a) ;
         }
       }

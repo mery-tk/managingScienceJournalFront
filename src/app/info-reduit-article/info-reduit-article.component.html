@@ -9,89 +9,52 @@
 
 <section class="content mt-5 ml-lg-5" >
   <div class="row" style="margin-left: 8%">
-    <div class="col-sm-10 mt-2 ml-lg-5" *ngIf="mode==1">
+	  <div class="col-sm-10 mt-2 ml-lg-5" >
       <div class="card">
         <div class="card-header bg-dark">
           <h1 class="card-title"><strong style="color: white">Liste des Articles</strong></h1>
 
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body table-responsive p-0" >
-		<div class="form-group" class="float-right">
-        <label  class="mat-badge-large ss" >Mot clé:</label>
-        <input maxlength="500" type="text" [(ngModel)]="motCle" />
-        <button class="btn btn-dark" (click)="chercher()">chercher</button>
-      </div>
-
-          <div class="form-group" class="float-right">
-            <label  class="mat-badge-large ss" >Auteur:</label>
-            <input maxlength="500" type="text" [(ngModel)]="aut" />
-            <button class="btn btn-dark" (click)="chercherParAuteur()">chercher</button>
+          <div class="card-tools">
+            <div class="input-group input-group-lg float-left" >
+              <form (ngSubmit)="chercher(motCle)" #f1="ngForm" class="form-check-inline">
+                <input type="text" name="motCle" class="form-control" [(ngModel)]="motCle" placeholder="Chercher par mot clé">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+              </form>
+            </div>
+            <div class="input-group input-group-lg float-left">
+              <form (ngSubmit)="chercherParAuteur()" #f2="ngForm" class="form-check-inline">
+                <input type="text" name="aut" class="form-control" [(ngModel)]="aut" placeholder="Chercher par auteur">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+              </form>
+            </div>
           </div>
 
+        </div>
+        <!-- /.card-header -->
+
+        <div class="card-body table-responsive p-0" >
           <table class="table table-hover">
             <thead>
             <tr>
               <th>Titre</th>
-
+              <th>Auteur</th>
+              <th>Co-auteurs</th>
               <th colspan="2" align="center">Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let a of articles;" class="clickable" >
               <td>{{a.titre}}</td>
-              <td><a class="clickable " routerLink="{{a.idArticle}}/auteurs">Voir Auteur & Co-auteur<span class="glyphicon glyphicon-circle-arrow-right"></span></a></td>
-              <td> <button class="btn btn-danger" routerLink="/inscription" >Plus d'infos</button></td>
-            </tr>
-            </tbody>
-          </table>
-          <div>
-            <p></p>
-          </div>
-
-
-          <div>
-            <p></p>
-          </div>
-          <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-      </div>
-    </div>
-
-	<!--/////////////////////////////////////////////////////////////-->
-	<div class="col-sm-10 mt-2 ml-lg-5" *ngIf="mode==2">
-      <div class="card">
-        <div class="card-header bg-dark">
-          <h1 class="card-title"><strong style="color: white">Liste des Articles</strong></h1>
-
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body table-responsive p-0" >
-		<div class="form-group" class="float-right">
-        <label  class="mat-badge-large ss" >Mot clé:</label>
-        <input maxlength="500" type="text" [(ngModel)]="motCle" />
-        <button class="btn btn-dark" (click)="chercher()">chercher</button>
-      </div>
-          <div class="form-group" class="float-right">
-            <label  class="mat-badge-large ss" >Auteur:</label>
-            <input maxlength="500" type="text" [(ngModel)]="aut" />
-            <button class="btn btn-dark" (click)="chercherParAuteur()">chercher</button>
-          </div>
-
-
-          <table class="table table-hover">
-            <thead>
-            <tr>
-              <th>Titre</th>
-
-              <th colspan="2" align="center">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let a of pageArticles?.content;" class="clickable" >
-              <td>{{a.titre}}</td>
-              <td><a class="clickable " routerLink="{{a.idArticle}}/auteurs">Voir Auteur & Co-auteur<span class="glyphicon glyphicon-circle-arrow-right"></span></a></td>
+              <td>{{auteur[a.idArticle]?.nom}} {{auteur[a.idArticle]?.prenom}}</td>
+              <td>
+                <ul>
+                  <li *ngFor="let auteur of co_auteurs[a.idArticle]">{{auteur?.nom}} {{auteur?.prenom}}</li>
+                </ul>
+              </td>
               <td> <button class="btn btn-danger" routerLink="/inscription" >Plus d'infos</button></td>
             </tr>
             </tbody>
