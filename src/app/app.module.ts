@@ -21,6 +21,17 @@ import { ModifierArticleComponent } from './Article/modifier-article/modifier-ar
 import { ArticlesAEvaluerComponent } from './Auteur/articles-aevaluer/articles-aevaluer.component';
 import {RefereeService} from './services/referee.service';
 import { DetailsArticlesAEvaluerComponent } from './Auteur/details-articles-aevaluer/details-articles-aevaluer.component';
+import { InfoReduitArticleComponent } from './info-reduit-article/info-reduit-article.component';
+import { InfoReduitAuteurComponent } from './info-reduit-auteur/info-reduit-auteur.component';
+import { FormulInscriptionComponent } from './formul-inscription/formul-inscription.component';
+import {UtilisateurService} from "./services/utilisateur.service";
+import { ListeArticleNonAuthComponent } from './liste-article-non-auth/liste-article-non-auth.component';
+import { DetailsArticleNonAuthComponent } from './details-article-non-auth/details-article-non-auth.component';
+import { ComiteArticlesRecentesComponent } from './comite-articles-recentes/comite-articles-recentes.component';
+import { ComiteArticlesEncourComponent } from './comite-articles-encour/comite-articles-encour.component';
+import { DetailsArticlRecentComponent } from './details-articl-recent/details-articl-recent.component';
+import { ComiteListArticlesComponent } from './comite-list-articles/comite-list-articles.component';
+import { ComiteListArticlesDetailsComponent } from './comite-list-articles-details/comite-list-articles-details.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +43,16 @@ import { DetailsArticlesAEvaluerComponent } from './Auteur/details-articles-aeva
     ModifierArticleComponent,
     ArticlesAEvaluerComponent,
     DetailsArticlesAEvaluerComponent,
+    InfoReduitArticleComponent,
+    InfoReduitAuteurComponent,
+    FormulInscriptionComponent,
+    ListeArticleNonAuthComponent,
+    DetailsArticleNonAuthComponent,
+    ComiteArticlesRecentesComponent,
+    ComiteArticlesEncourComponent,
+    DetailsArticlRecentComponent,
+    ComiteListArticlesComponent,
+    ComiteListArticlesDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +73,8 @@ import { DetailsArticlesAEvaluerComponent } from './Auteur/details-articles-aeva
     ArticleService,
     HttpClient,
     AuteurService,
-    RefereeService
+    RefereeService,
+    UtilisateurService
   ],
   bootstrap: [AppComponent]
 })

@@ -6,7 +6,8 @@ export class Article {
   resume: string
   motCle: string
   contenu: string
-  etat: string
+  etat: string='Recente'
+  idReferee:number
 
 
   constructor() {

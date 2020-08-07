@@ -40,4 +40,21 @@ export class ArticleService {
   }
 
 
+  chercherArticleParMotCle(motCle:string,page:number,size:number){
+    return this.http.get('http://localhost:8080/chercherArticles?mc='+motCle+'&size='+size+'&page='+page);
+
+  }
+
+  chercherArticleParAuteur(aut:string){
+    return this.http.get('http://localhost:8080/chercherArticleParAuteur?aut='+aut);
+  }
+  affecterRefereeArticle(article: Article){
+    return this.http.put('http://localhost:8080/ajouterRefereeArticle/'+article.idArticle,article);
+  }
+
+  trouverRefereePourArticle(idArticle: number) {
+    return this.http.get('http://localhost:8080/auteursNonReferee/'+idArticle);
+  }
+
+
 }

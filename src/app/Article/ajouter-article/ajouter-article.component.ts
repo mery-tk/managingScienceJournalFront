@@ -26,7 +26,7 @@ export class AjouterArticleComponent implements OnInit {
   ajouterArticle(article: any) {
     const uploadData = new FormData();
     console.log(article)
-    article.etat = "recent";
+    article.etat = "Recente";
     uploadData.append('file', this.file, this.file.name);
     uploadData.append('article', JSON.stringify(article));
     this.articleService.addArticle(uploadData)

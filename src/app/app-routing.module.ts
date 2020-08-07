@@ -8,17 +8,38 @@ import {MesArticlesComponent} from './Auteur/mes-articles/mes-articles.component
 import {ModifierArticleComponent} from './Article/modifier-article/modifier-article.component';
 import {ArticlesAEvaluerComponent} from './Auteur/articles-aevaluer/articles-aevaluer.component';
 import {DetailsArticlesAEvaluerComponent} from './Auteur/details-articles-aevaluer/details-articles-aevaluer.component';
+import {InfoReduitArticleComponent} from "./info-reduit-article/info-reduit-article.component";
+import {InfoReduitAuteurComponent} from "./info-reduit-auteur/info-reduit-auteur.component";
+import {FormulInscriptionComponent} from "./formul-inscription/formul-inscription.component";
+import {ListeArticleNonAuthComponent} from "./liste-article-non-auth/liste-article-non-auth.component";
+import {DetailsArticleNonAuthComponent} from "./details-article-non-auth/details-article-non-auth.component";
+import {ComiteListArticlesComponent} from "./comite-list-articles/comite-list-articles.component";
+import {ComiteListArticlesDetailsComponent} from "./comite-list-articles-details/comite-list-articles-details.component";
+import {ComiteArticlesEncourComponent} from "./comite-articles-encour/comite-articles-encour.component";
+import {ComiteArticlesRecentesComponent} from "./comite-articles-recentes/comite-articles-recentes.component";
+import {DetailsArticlRecentComponent} from "./details-articl-recent/details-articl-recent.component";
 
 
 const routes: Routes = [
+  {path:'',redirectTo:'/home',pathMatch:'full'},
   {path: 'articles', component: ListeArticlesComponent},
-  {path: 'home', component: AppComponent},
   {path: 'articles/:idArticle/details', component: DetailsArticleComponent},
+  {path: 'home/:idArticle/auteurs',component:InfoReduitAuteurComponent},
   {path: 'articlesAEvaluer/:idArticle/details', component: DetailsArticlesAEvaluerComponent},
+  {path: 'listeArticles/:idArticle/details', component:ComiteListArticlesDetailsComponent},
+  {path: 'ArticlesEnCours/:idArticle/details',component: ComiteListArticlesDetailsComponent},
+  {path: 'articlesRecentes/:idArticle/details',component: DetailsArticlRecentComponent},
   {path: 'articles/:idArticle', component: ModifierArticleComponent},
   {path: 'addArticle', component: AjouterArticleComponent},
   {path: 'mesArticles', component: MesArticlesComponent},
-  {path: 'articlesAEvaluer', component: ArticlesAEvaluerComponent}
+  {path: 'articlesAEvaluer', component: ArticlesAEvaluerComponent},
+  {path: 'inscription', component: FormulInscriptionComponent},
+  {path: 'home', component: InfoReduitArticleComponent},
+  {path: 'utilisateur/articles', component: ListeArticleNonAuthComponent},
+  {path: 'listeArticles' , component: ComiteListArticlesComponent},
+  {path: 'ArticlesEnCours',component: ComiteArticlesEncourComponent},
+  {path:'articlesRecentes',component: ComiteArticlesRecentesComponent},
+  {path: 'utilisateur/articles/:idArticle/details',component:DetailsArticleNonAuthComponent}
 ];
 
 @NgModule({

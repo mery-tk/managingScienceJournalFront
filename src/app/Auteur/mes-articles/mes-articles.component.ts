@@ -29,7 +29,7 @@ export class MesArticlesComponent implements OnInit {
   modifier(idArticle: number) {
     this.articleService.getArticleById(idArticle).subscribe(data => {
       let article = data as Article;
-      if(article.etat=="recent"){
+      if(article.etat=="En cours d'evaluation"){
         this.router.navigateByUrl("articles/"+idArticle);
       }else{
         alert("Vous n'avez pas le droit de modifier cet article, il est en cours d'evaluation.");
