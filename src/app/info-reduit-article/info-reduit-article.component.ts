@@ -17,7 +17,7 @@ export class InfoReduitArticleComponent implements OnInit {
   size:number=5;
   pages:Array<number>;
  mode: number = 1;
-  autr:string;
+  aut:string;
   constructor(private router: Router, private articleService: ArticleService) { }
 
   ngOnInit(): void {
@@ -48,7 +48,7 @@ export class InfoReduitArticleComponent implements OnInit {
   }
 
   chercherParAuteur(){
-this.articleService.chercherArticleParAuteur(this.autr).subscribe( (data: any) => {
+this.articleService.chercherArticleParAuteur(this.aut).subscribe( (data: any) => {
   this.articles = data;
   console.log(data);
 }, error => console.log(error));

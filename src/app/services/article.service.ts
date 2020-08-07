@@ -46,7 +46,7 @@ export class ArticleService {
   }
 
   chercherArticleParAuteur(aut:string){
-    return this.http.get('http://localhost:8080/chercherArticleParAuteur?aut='+aut);
+    return this.http.get('http://localhost:8080/chercherArticlesParAuteur?aut='+aut);
   }
   affecterRefereeArticle(article: Article){
     return this.http.put('http://localhost:8080/ajouterRefereeArticle/'+article.idArticle,article);
