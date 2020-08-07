@@ -14,29 +14,21 @@
         <div class="card-header bg-dark">
           <h1 class="card-title"><strong style="color: white">Liste des Articles</strong></h1>
 
-          <div class="card-tools">
-            <div class="input-group input-group-lg float-left" >
-              <form (ngSubmit)="chercher(motCle)" #f1="ngForm" class="form-check-inline">
-                <input type="text" name="motCle" class="form-control" [(ngModel)]="motCle" placeholder="Chercher par mot clé">
-                <div class="input-group-append">
-                  <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-                </div>
-              </form>
-            </div>
-            <div class="input-group input-group-lg float-left">
-              <form (ngSubmit)="chercherParAuteur()" #f2="ngForm" class="form-check-inline">
-                <input type="text" name="aut" class="form-control" [(ngModel)]="aut" placeholder="Chercher par auteur">
-                <div class="input-group-append">
-                  <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-                </div>
-              </form>
-            </div>
-          </div>
-
         </div>
         <!-- /.card-header -->
-
         <div class="card-body table-responsive p-0" >
+		    <div class="form-group" class="float-right">
+          <label  class="mat-badge-large ss" >Mot clé:</label>
+          <input class="" maxlength="500" type="text" [(ngModel)]="motCle" />
+          <button class="btn btn-dark" (click)="chercher(motCle)">chercher</button>
+        </div>
+          <div class="form-group" class="float-right">
+            <label  class="mat-badge-large ss" >Auteur:</label>
+            <input class="" maxlength="500" type="text" [(ngModel)]="aut" />
+            <button class="btn btn-dark" (click)="chercherParAuteur()">chercher</button>
+          </div>
+
+
           <table class="table table-hover">
             <thead>
             <tr>
