@@ -22,7 +22,7 @@ export class ComiteArticlesEncourComponent implements OnInit {
   ngOnInit(): void {
     this.articleService.getArticles().subscribe( (data: any) => {
       for(let a of data){
-        if(a.etat=="En cours d'evaluation"){
+        if(a.etat=="En cours d'evaluation par Comite" || a.etat=="En cours d'evaluation par Referees"){
           this.articles1.push(a) ;
         }
       }
