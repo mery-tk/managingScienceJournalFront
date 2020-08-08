@@ -33,6 +33,8 @@ import { DetailsArticlRecentComponent } from './details-articl-recent/details-ar
 import { ComiteListArticlesComponent } from './comite-list-articles/comite-list-articles.component';
 import { ComiteListArticlesDetailsComponent } from './comite-list-articles-details/comite-list-articles-details.component';
 import {MatStepperModule} from "@angular/material/stepper";
+import { EvaluationRefereeComponent } from './evaluation-referee/evaluation-referee.component';
+import {EvaluationRefereeService} from "./services/evaluationReferee.service";
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import {MatStepperModule} from "@angular/material/stepper";
     DetailsArticlRecentComponent,
     ComiteListArticlesComponent,
     ComiteListArticlesDetailsComponent,
+    EvaluationRefereeComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,8 @@ import {MatStepperModule} from "@angular/material/stepper";
     HttpClient,
     AuteurService,
     RefereeService,
-    UtilisateurService
+    UtilisateurService,
+    EvaluationRefereeService,
   ],
 
   bootstrap: [AppComponent]

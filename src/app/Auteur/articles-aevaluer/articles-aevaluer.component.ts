@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {ArticleService} from '../../services/article.service';
 import {AuteurService} from '../../services/auteur.service';
 import {RefereeService} from '../../services/referee.service';
+import {EvaluationRefereeService} from "../../services/evaluationReferee.service";
 
 @Component({
   selector: 'app-articles-aevaluer',
@@ -14,11 +15,11 @@ export class ArticlesAEvaluerComponent implements OnInit {
 
   articles: Array<Article> = new Array<Article>();
   article: Article = new Article();
-
-  constructor(private router: Router, private articleService: ArticleService, private refereeService: RefereeService) {}
+  mode:number=1;
+  constructor(private router: Router, private articleService: ArticleService, private refereeService: RefereeService,private evaluationRefereeService:EvaluationRefereeService) {}
 
   ngOnInit(): void {
-    this.refereeService.getArticleAEvaluer(5).subscribe((data: any) => {
+    this.refereeService.getArticleAEvaluer(6).subscribe((data: any) => {
       this.articles = data as Array<Article>;
       console.log(data);
     }, error => console.log(error));
@@ -27,4 +28,10 @@ export class ArticlesAEvaluerComponent implements OnInit {
   goDetails(idArticle: number) {
     this.router.navigateByUrl("articlesAEvaluer/"+idArticle+"/details");
   }
+
+  evaluerArticle(idArticle:number){
+//id Referee Connecté je vais mettre idReferee=5 par exemple
+    //this.evaluationRefereeService
+  }
+
 }

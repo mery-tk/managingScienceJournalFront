@@ -38,6 +38,7 @@
               <td>{{a.affiliations}}</td>
               <td>{{a.motCle}}</td>
               <td><a class="clickable " routerLink="" (click)="goDetails(a.idArticle)">Plus de details<span class="glyphicon glyphicon-circle-arrow-right"></span></a></td>
+              <td><button class="btn btn-success" (click)="evaluerArticle(a.idArticle)">Evaluer</button></td>
             </tr>
             </tbody>
           </table>
