@@ -22,9 +22,14 @@ export class DetailsArticlRecentComponent implements OnInit {
   arts: Array<Article> = new Array<Article>();
   mode: number = 1;
   referees:Array<Auteur>=new Array<Auteur>();
+
+  ref:Auteur=new Auteur();
+  selectedReferee: any;
+
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private articleService: ArticleService,
               private auteurService:AuteurService) {
     this.idArticle = activatedRoute.snapshot.params.idArticle;
+
   }
 
   ngOnInit(): void {
@@ -75,6 +80,9 @@ this.articleService.trouverRefereePourArticle(idArticle).subscribe((data: any) =
   affecter(){
    // this.articleService.affecterRefereeArticle(this.id);
     this.mode=1;
+    console.log(this.selectedReferee);
+
+
 
   }
 

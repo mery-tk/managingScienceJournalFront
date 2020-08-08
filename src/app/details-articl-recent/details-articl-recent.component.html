@@ -96,9 +96,11 @@
     <div>
       <mat-form-field class="form-group ml-2 mr-3" style="width: 99%">
         <mat-label class="ml-3">Referees: </mat-label>
-        <mat-select placeholder="selectionner trois referees" class="form-control" multiple  ngModel>
-          <mat-option *ngFor="let a of referees" [value]="a" >{{a.nom}} {{a.prenom}}</mat-option>
+
+        <mat-select placeholder="selectionner trois referees" class="form-control"  multiple  ngModel>
+          <mat-option *ngFor="let a of referees" [value]="selectedReferee" >{{a.nom}} {{a.prenom}}</mat-option>
         </mat-select>
+
       </mat-form-field>
     </div>
 <div>

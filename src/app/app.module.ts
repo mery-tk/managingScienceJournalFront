@@ -32,6 +32,7 @@ import { ComiteArticlesEncourComponent } from './comite-articles-encour/comite-a
 import { DetailsArticlRecentComponent } from './details-articl-recent/details-articl-recent.component';
 import { ComiteListArticlesComponent } from './comite-list-articles/comite-list-articles.component';
 import { ComiteListArticlesDetailsComponent } from './comite-list-articles-details/comite-list-articles-details.component';
+import {MatStepperModule} from "@angular/material/stepper";
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { ComiteListArticlesDetailsComponent } from './comite-list-articles-detai
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgxExtendedPdfViewerModule,
+    MatStepperModule,
   ],
   providers: [
     ArticleService,
@@ -76,6 +78,8 @@ import { ComiteListArticlesDetailsComponent } from './comite-list-articles-detai
     RefereeService,
     UtilisateurService
   ],
+
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

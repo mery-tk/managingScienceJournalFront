@@ -12,9 +12,8 @@
   <button  routerLink="/articlesAEvaluer"  mat-menu-item>Articles à Evaluer</button>
 </mat-menu>
 
-
-<section class="content mt-5 ml-lg-5" >
-  <div class="row" style="margin-left: 8%">
+<div class="container spacer">
+  <div class="row" style="margin-left: 8%" *ngIf="mode==1">
     <div class="col-sm-10 mt-2 ml-lg-5">
       <div class="card">
         <div class="card-header bg-dark">
@@ -40,6 +39,7 @@
               <td><a class="clickable " routerLink=""  (click)="modifier(a.idArticle)"><span class="glyphicon glyphicon-edit"></span></a></td>
               <td><a class="clickable " routerLink="" (click)="supprimer(a)" ><span class="glyphicon glyphicon-trash"></span></a></td>
               <td><a class="clickable " routerLink="" (click)="goDetails(a.idArticle)">Plus de details<span class="glyphicon glyphicon-circle-arrow-right"></span></a></td>
+              <td><button  class="btn btn-info" (click)="suivreEtat(a.idArticle)">Suivre Etat Article</button></td>
             </tr>
             </tbody>
           </table>
@@ -47,7 +47,21 @@
         </div>
         <!-- /.card -->
       </div>
+
     </div>
   </div>
-</section>
+  <div  *ngIf="mode==2" class="center">
+<div *ngIf="!processing">
+<mat-vertical-stepper linear [selectedIndex]="currentStep">
+  <mat-step label="Recente"><p>Cet Article est publie dernièrement</p></mat-step>
+  <mat-step label="Evalue par Comite" ><p>L'article est en cours d'evaluation par la comite editorial</p></mat-step>
+  <mat-step label="Evalue par Referees"><p>L'article est en cours d'evaluation par les referees</p></mat-step>
+  <mat-step label="Accepte"><p>Votre Article est accepté et alors sera publié</p></mat-step>
+
+</mat-vertical-stepper>
+</div>
+
+  </div>
+  </div>
+
 
