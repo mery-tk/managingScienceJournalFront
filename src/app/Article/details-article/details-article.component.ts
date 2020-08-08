@@ -50,4 +50,8 @@ export class DetailsArticleComponent implements OnInit {
       this.file = data;
     }, error => console.log(error));
   }
+
+  suivreEtat() {
+
+  }
 }

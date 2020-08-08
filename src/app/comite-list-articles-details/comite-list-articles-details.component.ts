@@ -50,4 +50,8 @@ export class ComiteListArticlesDetailsComponent implements OnInit {
       this.file = data;
     }, error => console.log(error));
   }
+
+  goEvaluate() {
+    this.router.navigateByUrl("articles/"+this.idArticle+"/evaluationComite");
+  }
 }

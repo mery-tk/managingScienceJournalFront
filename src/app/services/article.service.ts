@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Article} from '../model/article.model';
+import {Referee} from '../model/referee.model';
 
 @Injectable()
 export class ArticleService {
@@ -48,13 +49,16 @@ export class ArticleService {
   chercherArticleParAuteur(aut:string){
     return this.http.get('http://localhost:8080/chercherArticlesParAuteur?aut='+aut);
   }
-  affecterRefereeArticle(article: Article){
-    return this.http.put('http://localhost:8080/ajouterRefereeArticle/'+article.idArticle,article);
+  affecterRefereeArticle(idArticle: number, referees:Array<Referee>){
+    return this.http.put('http://localhost:8080/ajouterRefereeArticle/'+idArticle, referees);
   }
 
   trouverRefereePourArticle(idArticle: number) {
     return this.http.get('http://localhost:8080/auteursNonReferee/'+idArticle);
   }
 
+  evaluationComiteArticle(idArticle: number, qualification: string){
+    return this.http.put('http://localhost:8080/articles/'+idArticle+'/evaluationComite/', qualification);
+  }
 
 }

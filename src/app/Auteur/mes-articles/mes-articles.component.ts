@@ -71,7 +71,7 @@ this.articleService.getArticleById(idArticle).subscribe(data=>{
      this.processing=false
   },150);
   }
-  if(article.etat=="Evalue par Comite") {
+  if(article.etat=="En cours d'evaluation par Comite") {
     this.processing = true;
 
     setTimeout(()=>{
@@ -80,7 +80,7 @@ this.articleService.getArticleById(idArticle).subscribe(data=>{
       this.processing=false
     },150);
   }
-  if(article.etat=="Evalue par Referees") {
+  if(article.etat=="En cours d'evaluation par Referees") {
     this.processing = true;
 
     setTimeout(()=>{
@@ -89,7 +89,7 @@ this.articleService.getArticleById(idArticle).subscribe(data=>{
       this.processing=false
     },150);
   }
-  if(article.etat=="Accepte") {
+  if(article.etat=="Accepté") {
     this.processing = true;
 
     setTimeout(()=>{
