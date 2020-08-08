@@ -33,6 +33,7 @@ import { DetailsArticlRecentComponent } from './details-articl-recent/details-ar
 import { ComiteListArticlesComponent } from './comite-list-articles/comite-list-articles.component';
 import { ComiteListArticlesDetailsComponent } from './comite-list-articles-details/comite-list-articles-details.component';
 import {MatStepperModule} from "@angular/material/stepper";
+import { EvaluationComiteComponent } from './evaluation-comite/evaluation-comite.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import {MatStepperModule} from "@angular/material/stepper";
     DetailsArticlRecentComponent,
     ComiteListArticlesComponent,
     ComiteListArticlesDetailsComponent,
+    EvaluationComiteComponent,
   ],
   imports: [
     BrowserModule,

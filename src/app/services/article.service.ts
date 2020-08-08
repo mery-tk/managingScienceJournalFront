@@ -57,5 +57,8 @@ export class ArticleService {
     return this.http.get('http://localhost:8080/auteursNonReferee/'+idArticle);
   }
 
+  evaluationComiteArticle(idArticle: number, qualification: string){
+    return this.http.put('http://localhost:8080/articles/'+idArticle+'/evaluationComite/', qualification);
+  }
 
 }

@@ -18,6 +18,7 @@ import {ComiteListArticlesDetailsComponent} from "./comite-list-articles-details
 import {ComiteArticlesEncourComponent} from "./comite-articles-encour/comite-articles-encour.component";
 import {ComiteArticlesRecentesComponent} from "./comite-articles-recentes/comite-articles-recentes.component";
 import {DetailsArticlRecentComponent} from "./details-articl-recent/details-articl-recent.component";
+import {EvaluationComiteComponent} from './evaluation-comite/evaluation-comite.component';
 
 
 const routes: Routes = [
@@ -39,7 +40,8 @@ const routes: Routes = [
   {path: 'listeArticles' , component: ComiteListArticlesComponent},
   {path: 'ArticlesEnCours',component: ComiteArticlesEncourComponent},
   {path:'articlesRecentes',component: ComiteArticlesRecentesComponent},
-  {path: 'utilisateur/articles/:idArticle/details',component:DetailsArticleNonAuthComponent}
+  {path: 'utilisateur/articles/:idArticle/details',component:DetailsArticleNonAuthComponent},
+  {path:"articles/:idArticle/evaluationComite", component: EvaluationComiteComponent}
 ];
 
 @NgModule({

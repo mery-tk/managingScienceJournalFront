@@ -89,7 +89,7 @@ this.articleService.getArticleById(idArticle).subscribe(data=>{
       this.processing=false
     },150);
   }
-  if(article.etat=="Accepte") {
+  if(article.etat=="Accepté") {
     this.processing = true;
 
     setTimeout(()=>{
