@@ -91,23 +91,29 @@
 
 
   <div *ngIf="mode==2">
-
-
-    <div>
+    <div class="col-sm-11 mt-3 ml-5">
+      <div class="card ">
+        <div class="card-header bg-dark">
+          <h2 class="card-title text-white"><strong>Affecter l'Article "{{article.titre}}" à 3 referees</strong></h2>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <div class="card-body">
+      <div>
       <mat-form-field class="form-group ml-2 mr-3" style="width: 99%">
         <mat-label class="ml-3">Referees: </mat-label>
-
-        <mat-select placeholder="selectionner trois referees" class="form-control"  multiple  ngModel>
-          <mat-option *ngFor="let a of referees" [value]="selectedReferee" >{{a.nom}} {{a.prenom}}</mat-option>
+        <mat-select #select placeholder="selectionner trois referees" class="form-control"  multiple maxlength="3" minlength="3"  [(ngModel)]="selectedReferees" name="selectedReferees">
+          <mat-option *ngFor="let a of referees" [value]="a" >{{a.nom}} {{a.prenom}}</mat-option>
         </mat-select>
-
+        <mat-hint align="end" *ngIf="select.value?.length!=3">Veuillez choisir exactement 3 réferees</mat-hint>
       </mat-form-field>
     </div>
 <div>
   <button class="btn btn-dark " style="width: 100%;" ><strong class="size24" (click)="affecter()">Affecter ces Referees</strong></button>
 </div>
-
+    </div>
   </div>
-
+    </div>
+  </div>
 
 </div>

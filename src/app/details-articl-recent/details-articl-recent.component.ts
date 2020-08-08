@@ -4,6 +4,7 @@ import {Auteur} from "../model/auteur.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ArticleService} from "../services/article.service";
 import {AuteurService} from "../services/auteur.service";
+import {Referee} from '../model/referee.model';
 
 @Component({
   selector: 'app-details-articl-recent',
@@ -22,9 +23,9 @@ export class DetailsArticlRecentComponent implements OnInit {
   arts: Array<Article> = new Array<Article>();
   mode: number = 1;
   referees:Array<Auteur>=new Array<Auteur>();
+  selectedReferees:Array<Referee>=new Array<Referee>();
 
   ref:Auteur=new Auteur();
-  selectedReferee: any;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private articleService: ArticleService,
               private auteurService:AuteurService) {
@@ -68,22 +69,21 @@ export class DetailsArticlRecentComponent implements OnInit {
   }
 
   AccepterArticle(idArticle: any){
-this.mode=2;
-this.id=idArticle;
-this.articleService.trouverRefereePourArticle(idArticle).subscribe((data: any) => {
-  this.referees = data;
-}, error => console.log(error));
+    this.mode=2;
+    this.id=idArticle;
+    this.articleService.trouverRefereePourArticle(idArticle).subscribe((data: any) => {
+      this.referees = data;
+    }, error => console.log(error));
 
 
   }
 
   affecter(){
-   // this.articleService.affecterRefereeArticle(this.id);
     this.mode=1;
-    console.log(this.selectedReferee);
-
-
-
+    console.log(this.selectedReferees);
+    this.articleService.affecterRefereeArticle(this.idArticle, this.selectedReferees).subscribe(data =>{
+      console.log(data)
+    }, error => console.log(error));
   }
 
 
