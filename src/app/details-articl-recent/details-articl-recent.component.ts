@@ -57,14 +57,9 @@ export class DetailsArticlRecentComponent implements OnInit {
 
 
   RefuserArticle(article: Article) {
-    const confirm = window.confirm('etes-vous sur de vouloir refuser et alors supprimer cet Article??');
+    const confirm = window.confirm('etes-vous sur de vouloir refuser cet Article??');
     if (confirm == true) {
-      this.articleService.daleteArticle(article.idArticle)
-        .subscribe(data => {
-          this.arts.splice(this.arts.indexOf(article), 1);
-        }, error => {
-          console.log(error);
-        });
+     article.etat="Refuse";
     }
   }
 

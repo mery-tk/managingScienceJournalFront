@@ -19,29 +19,31 @@ import {ComiteArticlesEncourComponent} from "./comite-articles-encour/comite-art
 import {ComiteArticlesRecentesComponent} from "./comite-articles-recentes/comite-articles-recentes.component";
 import {DetailsArticlRecentComponent} from "./details-articl-recent/details-articl-recent.component";
 import {EvaluationComiteComponent} from './evaluation-comite/evaluation-comite.component';
+import {EvaluationRefereeComponent} from "./evaluation-referee/evaluation-referee.component";
 
 
 const routes: Routes = [
-  {path:'',redirectTo:'/home',pathMatch:'full'},
-  {path: 'articles', component: ListeArticlesComponent},
-  {path: 'articles/:idArticle/details', component: DetailsArticleComponent},
-  {path: 'home/:idArticle/auteurs',component:InfoReduitAuteurComponent},
+  {path:'',redirectTo:'/home',pathMatch:'full'},//
+  {path: 'articles', component: ListeArticlesComponent},//
+  {path: 'articles/:idArticle/details', component: DetailsArticleComponent},//
+  {path: 'home/:idArticle/auteurs',component:InfoReduitAuteurComponent},//
   {path: 'articlesAEvaluer/:idArticle/details', component: DetailsArticlesAEvaluerComponent},
   {path: 'listeArticles/:idArticle/details', component:ComiteListArticlesDetailsComponent},
   {path: 'ArticlesEnCours/:idArticle/details',component: ComiteListArticlesDetailsComponent},
   {path: 'articlesRecentes/:idArticle/details',component: DetailsArticlRecentComponent},
   {path: 'articles/:idArticle', component: ModifierArticleComponent},
   {path: 'addArticle', component: AjouterArticleComponent},
-  {path: 'mesArticles', component: MesArticlesComponent},
+  {path: 'mesArticles', component: MesArticlesComponent},//
   {path: 'articlesAEvaluer', component: ArticlesAEvaluerComponent},
-  {path: 'inscription', component: FormulInscriptionComponent},
-  {path: 'home', component: InfoReduitArticleComponent},
-  {path: 'utilisateur/articles', component: ListeArticleNonAuthComponent},
-  {path: 'listeArticles' , component: ComiteListArticlesComponent},
+  {path: 'inscription', component: FormulInscriptionComponent},//
+  {path: 'home', component: InfoReduitArticleComponent},//
+  {path: 'utilisateur/articles', component: ListeArticleNonAuthComponent},//
+  {path: 'listeArticles' , component: ComiteListArticlesComponent},//
   {path: 'ArticlesEnCours',component: ComiteArticlesEncourComponent},
   {path:'articlesRecentes',component: ComiteArticlesRecentesComponent},
-  {path: 'utilisateur/articles/:idArticle/details',component:DetailsArticleNonAuthComponent},
-  {path:"articles/:idArticle/evaluationComite", component: EvaluationComiteComponent}
+  {path: 'utilisateur/articles/:idArticle/details',component:DetailsArticleNonAuthComponent},//
+  {path:"articles/:idArticle/evaluationComite", component: EvaluationComiteComponent},//
+  {path:"articlesAEvaluer/:idArticle/evaluationReferee", component: EvaluationRefereeComponent},
 ];
 
 @NgModule({

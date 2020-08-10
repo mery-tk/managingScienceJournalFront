@@ -31,5 +31,7 @@ export class DetailsArticlesAEvaluerComponent implements OnInit {
       this.file = data;
     }, error => console.log(error));
   }
-
+  Evaluer() {
+    this.router.navigateByUrl("articles/"+this.idArticle+"/evaluationReferee");
+  }
 }

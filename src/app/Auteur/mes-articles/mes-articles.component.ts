@@ -98,12 +98,24 @@ this.articleService.getArticleById(idArticle).subscribe(data=>{
       this.processing=false
     },150);
   }
+  if(article.etat=="Refuse") {
+    this.processing = true;
 
+    setTimeout(()=>{
+      this.currentStep = 4;
+      this.processing = false;
+      this.processing=false
+    },150);
+  }
   }
 
 
 );
 
+  }
+
+  goBack(){
+    this.mode=1;
   }
 
 }

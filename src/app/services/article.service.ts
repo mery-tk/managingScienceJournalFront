@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Article} from '../model/article.model';
 import {Referee} from '../model/referee.model';
+import {EvaluationReferee} from "../model/evaluationReferee.model";
+
 
 @Injectable()
 export class ArticleService {

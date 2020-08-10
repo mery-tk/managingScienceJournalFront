@@ -33,12 +33,10 @@ import { DetailsArticlRecentComponent } from './details-articl-recent/details-ar
 import { ComiteListArticlesComponent } from './comite-list-articles/comite-list-articles.component';
 import { ComiteListArticlesDetailsComponent } from './comite-list-articles-details/comite-list-articles-details.component';
 import {MatStepperModule} from "@angular/material/stepper";
-<<<<<<< HEAD
 import { EvaluationRefereeComponent } from './evaluation-referee/evaluation-referee.component';
 import {EvaluationRefereeService} from "./services/evaluationReferee.service";
-=======
 import { EvaluationComiteComponent } from './evaluation-comite/evaluation-comite.component';
->>>>>>> 18024696905650b7af180902fcad4e06c83e3f97
+
 
 @NgModule({
   declarations: [
@@ -60,11 +58,8 @@ import { EvaluationComiteComponent } from './evaluation-comite/evaluation-comite
     DetailsArticlRecentComponent,
     ComiteListArticlesComponent,
     ComiteListArticlesDetailsComponent,
-<<<<<<< HEAD
     EvaluationRefereeComponent,
-=======
     EvaluationComiteComponent,
->>>>>>> 18024696905650b7af180902fcad4e06c83e3f97
   ],
   imports: [
     BrowserModule,
