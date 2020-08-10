@@ -37,7 +37,6 @@ import { EvaluationRefereeComponent } from './evaluation-referee/evaluation-refe
 import {EvaluationRefereeService} from "./services/evaluationReferee.service";
 import { EvaluationComiteComponent } from './evaluation-comite/evaluation-comite.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
