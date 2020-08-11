@@ -19,7 +19,7 @@ export class ArticlesAEvaluerComponent implements OnInit {
   constructor(private router: Router, private articleService: ArticleService, private refereeService: RefereeService,private evaluationRefereeService:EvaluationRefereeService) {}
 
   ngOnInit(): void {
-    this.refereeService.getArticleAEvaluer(7).subscribe((data: any) => {
+    this.refereeService.getArticleAEvaluer(3).subscribe((data: any) => {
       this.articles = data as Array<Article>;
       console.log(data);
     }, error => console.log(error));

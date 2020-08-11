@@ -13,8 +13,8 @@ export class EvaluationRefereeComponent implements OnInit {
   evaluation:EvaluationReferee=new EvaluationReferee();
   mode:number=1;
   idArticle:number;
-  constructor(public evaluationRefereeService :EvaluationRefereeService,private activatedRoute: ActivatedRoute) {
 
+  constructor(public evaluationRefereeService :EvaluationRefereeService,private activatedRoute: ActivatedRoute) {
     this.idArticle = activatedRoute.snapshot.params.idArticle;
   }
 
@@ -23,20 +23,10 @@ export class EvaluationRefereeComponent implements OnInit {
 
 
   saveEvaluation(){
-      this.evaluationRefereeService.saveEvaluationReferee(this.evaluation)
-      .subscribe(data=>{
-        // @ts-ignore
+    this.evaluationRefereeService.evaluerParReferee(this.idArticle,this.evaluation, 3)
+      .subscribe((data: any)=>{
         this.evaluation=data;
-        console.log(data);
-        console.log(this.idArticle);
-        this.mode=2;
-      },err=>{
-        console.log(err);
-      })
-    this.evaluationRefereeService.evaluerParReferee(this.idArticle,this.evaluation)
-      .subscribe(data=>{
-        // @ts-ignore
-        this.evaluation=data;
+        this.mode = 2;
         console.log(this.idArticle);
       },err=>{
         console.log(err);

@@ -8,8 +8,8 @@ export class EvaluationRefereeService {
   constructor(private  http: HttpClient) { }
 
 
-  evaluerParReferee(idArticle: number,evaluationReferee:EvaluationReferee){
-    return this.http.put('http://localhost:8080/articles/'+idArticle+'/evaluationReferee/', evaluationReferee);
+  evaluerParReferee(idArticle: number,evaluationReferee:EvaluationReferee, idReferee: number){
+    return this.http.post('http://localhost:8080/articles/'+idArticle+'/evaluationReferee/'+idReferee, evaluationReferee);
   }
 
 
