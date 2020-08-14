@@ -36,6 +36,8 @@ import {MatStepperModule} from "@angular/material/stepper";
 import { EvaluationRefereeComponent } from './evaluation-referee/evaluation-referee.component';
 import {EvaluationRefereeService} from "./services/evaluationReferee.service";
 import { EvaluationComiteComponent } from './evaluation-comite/evaluation-comite.component';
+import {AuthenticationService} from "./services/authentication.service";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,7 @@ import { EvaluationComiteComponent } from './evaluation-comite/evaluation-comite
     ComiteListArticlesDetailsComponent,
     EvaluationRefereeComponent,
     EvaluationComiteComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +86,7 @@ import { EvaluationComiteComponent } from './evaluation-comite/evaluation-comite
     RefereeService,
     UtilisateurService,
     EvaluationRefereeService,
+    AuthenticationService,
   ],
 
   bootstrap: [AppComponent]

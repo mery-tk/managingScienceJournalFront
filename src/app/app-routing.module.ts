@@ -20,6 +20,7 @@ import {ComiteArticlesRecentesComponent} from "./comite-articles-recentes/comite
 import {DetailsArticlRecentComponent} from "./details-articl-recent/details-articl-recent.component";
 import {EvaluationComiteComponent} from './evaluation-comite/evaluation-comite.component';
 import {EvaluationRefereeComponent} from "./evaluation-referee/evaluation-referee.component";
+import {LoginComponent} from "./login/login.component";
 
 
 const routes: Routes = [
@@ -44,6 +45,7 @@ const routes: Routes = [
   {path: 'utilisateur/articles/:idArticle/details',component:DetailsArticleNonAuthComponent},//
   {path:"articles/:idArticle/evaluationComite", component: EvaluationComiteComponent},//
   {path:"articlesAEvaluer/:idArticle/evaluationReferee", component: EvaluationRefereeComponent},
+  {path: 'login',component: LoginComponent},
 ];
 
 @NgModule({

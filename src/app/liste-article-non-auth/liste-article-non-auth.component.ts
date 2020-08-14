@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Article} from "../model/article.model";
 import {Router} from "@angular/router";
 import {ArticleService} from "../services/article.service";
+import {AuthenticationService} from "../services/authentication.service";
 
 @Component({
   selector: 'app-liste-article-non-auth',
@@ -15,7 +16,7 @@ export class ListeArticleNonAuthComponent implements OnInit {
   size = 4;
 
 
-  constructor(private router: Router, private articleService: ArticleService) { }
+  constructor(private router: Router, private articleService: ArticleService,private authenticationService:AuthenticationService) { }
 
   ngOnInit(): void {
     this.articleService.getArticles().subscribe( (data: any) => {
@@ -28,6 +29,9 @@ export class ListeArticleNonAuthComponent implements OnInit {
 
   goToPage(i: number) {
 
+  }
+  Deconnecter(){
+    this.authenticationService.logout();
   }
 }
 
