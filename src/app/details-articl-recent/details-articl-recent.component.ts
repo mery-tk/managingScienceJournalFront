@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ArticleService} from "../services/article.service";
 import {AuteurService} from "../services/auteur.service";
 import {Referee} from '../model/referee.model';
+import {AuthenticationService} from '../services/authentication.service';
 
 @Component({
   selector: 'app-details-articl-recent',
@@ -27,31 +28,38 @@ export class DetailsArticlRecentComponent implements OnInit {
 
   ref:Auteur=new Auteur();
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private articleService: ArticleService,
-              private auteurService:AuteurService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private authenticationService: AuthenticationService,
+              private articleService: ArticleService, private auteurService:AuteurService) {
     this.idArticle = activatedRoute.snapshot.params.idArticle;
 
   }
 
   ngOnInit(): void {
-    this.articleService.getArticleById(this.idArticle).subscribe(data => {
-      this.article = data as Article;
-      this.articleService.getAuteursArticle(this.idArticle).subscribe((data: any) => {
-        let auteurs = data;
-        console.log(data)
-        for (let auteur1 of auteurs) {
-          this.articleService.getCorrespondanceAuteurArticle(this.idArticle, auteur1.idUtilisateur).subscribe(data => {
-            this.corresp = data as boolean;
-            if(this.corresp == true){
-              this.auteur = auteur1;
-            }else{
-              this.co_auteurs.push(auteur1);
-            }
-          }, error => console.log(error));
-        }
+    let jwt = this.authenticationService.loadToken();
+    if (jwt){
+      this.articleService.getArticleById(this.idArticle).subscribe(data => {
+        this.article = data as Article;
+        this.articleService.getAuteursArticle(this.idArticle).subscribe((data: any) => {
+          let auteurs = data;
+          console.log(data)
+          for (let auteur1 of auteurs) {
+            this.articleService.getCorrespondanceAuteurArticle(this.idArticle, auteur1.idUtilisateur).subscribe(data => {
+              this.corresp = data as boolean;
+              if(this.corresp == true){
+                this.auteur = auteur1;
+              }else{
+                this.co_auteurs.push(auteur1);
+              }
+            }, error => console.log(error));
+          }
+        }, error => console.log(error));
+        console.log(data);
       }, error => console.log(error));
-      console.log(data);
-    }, error => console.log(error));
+    }else{
+      this.router.navigateByUrl("/home");
+    }
+
+
 
   }
 
@@ -74,10 +82,9 @@ export class DetailsArticlRecentComponent implements OnInit {
   }
 
   affecter(){
-    this.mode=1;
-    console.log(this.selectedReferees);
     this.articleService.affecterRefereeArticle(this.idArticle, this.selectedReferees).subscribe(data =>{
-      console.log(data)
+      console.log(data);
+      this.router.navigateByUrl("/articlesRecentes");
     }, error => console.log(error));
   }
 
@@ -88,5 +95,9 @@ export class DetailsArticlRecentComponent implements OnInit {
       console.log(data)
       this.file = data;
     }, error => console.log(error));
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 }

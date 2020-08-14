@@ -3,7 +3,7 @@
   <div class="spacer"></div>
   <a mat-button routerLink="/home">Home</a>
   <a mat-button [matMenuTriggerFor]="Articles">Articles</a>
-  <a mat-raised-button color="accent">Logout</a>
+  <a mat-raised-button color="accent" (click)="logout()">Logout</a>
 </mat-toolbar>
 <mat-menu #Articles=matMenu>
   <button  routerLink="/articles"  mat-menu-item>Liste Articles</button>
@@ -63,7 +63,6 @@
   <mat-step label="Refuse"><p>Votre Article est refusé et alors ne sera pas traité</p></mat-step>
 </mat-vertical-stepper>
 </div>
-
   </div>
   </div>
 

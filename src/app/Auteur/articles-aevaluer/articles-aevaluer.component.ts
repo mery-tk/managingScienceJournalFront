@@ -5,6 +5,7 @@ import {ArticleService} from '../../services/article.service';
 import {AuteurService} from '../../services/auteur.service';
 import {RefereeService} from '../../services/referee.service';
 import {EvaluationRefereeService} from "../../services/evaluationReferee.service";
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-articles-aevaluer',
@@ -16,13 +17,21 @@ export class ArticlesAEvaluerComponent implements OnInit {
   articles: Array<Article> = new Array<Article>();
   article: Article = new Article();
   mode:number=1;
-  constructor(private router: Router, private articleService: ArticleService, private refereeService: RefereeService,private evaluationRefereeService:EvaluationRefereeService) {}
+  constructor(private router: Router, private articleService: ArticleService,
+              private refereeService: RefereeService,private evaluationRefereeService:EvaluationRefereeService,
+              private authenticationService: AuthenticationService) {}
 
   ngOnInit(): void {
-    this.refereeService.getArticleAEvaluer(3).subscribe((data: any) => {
-      this.articles = data as Array<Article>;
-      console.log(data);
-    }, error => console.log(error));
+    let jwt = this.authenticationService.loadToken();
+    if (jwt){
+      this.refereeService.getArticleAEvaluer(5).subscribe((data: any) => {
+        this.articles = data as Array<Article>;
+        console.log(data);
+      }, error => console.log(error));
+    }else{
+      this.router.navigateByUrl("/home");
+    }
+
   }
 
   goDetails(idArticle: number) {
@@ -33,6 +42,10 @@ export class ArticlesAEvaluerComponent implements OnInit {
 //id Referee Connecté je vais mettre idReferee=5 par exemple
     //this.evaluationRefereeService
     this.router.navigateByUrl("articlesAEvaluer/"+idArticle+"/evaluationReferee");
+  }
+
+  logout(){
+    this.authenticationService.logout();
   }
 
 }

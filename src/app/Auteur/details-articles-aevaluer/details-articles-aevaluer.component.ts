@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Article} from '../../model/article.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ArticleService} from '../../services/article.service';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-details-articles-aevaluer',
@@ -13,15 +14,22 @@ export class DetailsArticlesAEvaluerComponent implements OnInit {
   article: Article = new Article();
   file: any;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private articleService: ArticleService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute,
+              private articleService: ArticleService, private authenticationService: AuthenticationService) {
     this.idArticle = activatedRoute.snapshot.params.idArticle;
   }
 
   ngOnInit(): void {
-    this.articleService.getArticleById(this.idArticle).subscribe(data => {
-      this.article = data as Article;
-      console.log(data);
-    }, error => console.log(error));
+    let jwt = this.authenticationService.loadToken();
+    if (jwt){
+      this.articleService.getArticleById(this.idArticle).subscribe(data => {
+        this.article = data as Article;
+        console.log(data);
+      }, error => console.log(error));
+    }else{
+      this.router.navigateByUrl("/home");
+    }
+
 
   }
 
@@ -33,5 +41,9 @@ export class DetailsArticlesAEvaluerComponent implements OnInit {
   }
   Evaluer() {
     this.router.navigateByUrl("articles/"+this.idArticle+"/evaluationReferee");
+  }
+
+  logout(){
+    this.authenticationService.logout();
   }
 }

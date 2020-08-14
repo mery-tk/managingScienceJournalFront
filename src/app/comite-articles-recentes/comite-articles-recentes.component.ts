@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Article} from "../model/article.model";
 import {Router} from "@angular/router";
 import {ArticleService} from "../services/article.service";
+import {AuthenticationService} from '../services/authentication.service';
 
 @Component({
   selector: 'app-comite-articles-recentes',
@@ -17,24 +18,35 @@ export class ComiteArticlesRecentesComponent implements OnInit {
   size = 4;
 
 
-  constructor(private router: Router, private articleService: ArticleService) { }
+  constructor(private router: Router, private articleService: ArticleService, private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.articleService.getArticles().subscribe( (data: any) => {
-      for(let a of data){
-        if(a.etat=="recent"){
-          this.articles1.push(a) ;
+    let jwt = this.authenticationService.loadToken();
+    if (jwt){
+      this.articleService.getArticles().subscribe( (data: any) => {
+        for(let a of data){
+          if(a.etat=="recent"){
+            this.articles1.push(a) ;
+          }
         }
-      }
-      this.articles=this.articles1;
-      console.log(data);
-      console.log(this.articles);
-    }, error => console.log(error));
+        this.articles=this.articles1;
+        console.log(data);
+        console.log(this.articles);
+      }, error => console.log(error));
+    }else{
+      this.router.navigateByUrl("/home");
+    }
+
+
   }
 
 
   goToPage(i: number) {
 
+  }
+
+  logout(){
+    this.authenticationService.logout();
   }
 }
 

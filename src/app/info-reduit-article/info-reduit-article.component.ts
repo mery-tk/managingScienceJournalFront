@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import {ArticleService} from "../services/article.service";
 import {AuteurService} from '../services/auteur.service';
 import {Auteur} from '../model/auteur.model';
+import {AuthenticationService} from '../services/authentication.service';
+import {JwtHelper} from 'angular2-jwt';
 
 @Component({
   selector: 'app-info-reduit-article',
@@ -21,9 +23,26 @@ export class InfoReduitArticleComponent implements OnInit {
   aut:string = "";
   auteur: Array<Auteur> = new Array<Auteur>();
   co_auteurs: Array<Array<Auteur>> = new Array<Array<Auteur>>();
-  constructor(private router: Router, private articleService: ArticleService) { }
+  authenticated: boolean = false;
+  roles: Array<any>;
+  jwtHelper=new JwtHelper();
+  comite: boolean;
+
+  constructor(private router: Router, private articleService: ArticleService, private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
+    let token = this.authenticationService.loadToken();
+    if(token){
+      this.authenticated = true;
+      this.roles=this.jwtHelper.decodeToken(token).roles;
+      for (let role of this.roles) {
+        if(role.authority=="AUTEUR"){
+          this.comite = false;
+        }else if (role.authority=="COMITE"){
+          this.comite = true;
+        }
+      }
+    }
     this.chercher("");
   }
 
@@ -76,4 +95,15 @@ export class InfoReduitArticleComponent implements OnInit {
   }
 
 
+  logout() {
+    this.authenticationService.logout();
+  }
+
+  getInfos(idArticle: number) {
+    if(this.authenticated){
+      this.router.navigateByUrl("/home/"+idArticle+"/auteurs");
+    }else {
+      this.router.navigateByUrl("/inscription");
+    }
+  }
 }

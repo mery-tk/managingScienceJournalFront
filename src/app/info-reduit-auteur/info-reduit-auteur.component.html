@@ -2,9 +2,23 @@
   <span>Gestion Revue</span>
   <div class="spacer"></div>
   <a mat-button routerLink="/home">Home</a>
-  <a mat-button routerLink="/authentification">Authentification</a>
-  <a mat-raised-button color="accent" routerLink="/inscription">Inscription</a>
+  <a mat-button routerLink="/login" *ngIf="!authenticated">Authentification</a>
+  <a mat-raised-button color="accent" routerLink="/inscription" *ngIf="!authenticated">Inscription</a>
+  <a mat-button [matMenuTriggerFor]="Articles" *ngIf="authenticated && !comite">Articles</a>
+  <a mat-button [matMenuTriggerFor]="ArticlesComite" *ngIf="authenticated && comite">Articles</a>
+  <a mat-raised-button color="accent" *ngIf="authenticated" (click)="logout()">Logout</a>
 </mat-toolbar>
+<mat-menu #Articles=matMenu>
+  <button  routerLink="/articles"  mat-menu-item>Liste Articles</button>
+  <button  routerLink="/addArticle"  mat-menu-item>Ajouter un Article</button>
+  <button  routerLink="/mesArticles"  mat-menu-item>Voir mes Articles</button>
+  <button  routerLink="/articlesAEvaluer"  mat-menu-item>Articles à Evaluer</button>
+</mat-menu>
+<mat-menu #ArticlesComite=matMenu>
+  <button  routerLink="/listeArticles"  mat-menu-item>Liste Articles</button>
+  <button  routerLink="/ArticlesEnCours"  mat-menu-item>Articles En cours d'Evaluation</button>
+  <button  routerLink="/articlesRecentes"  mat-menu-item>Articles Recentes</button>
+</mat-menu>
 
 
 <div class="col-sm-11 mt-3 ml-5">

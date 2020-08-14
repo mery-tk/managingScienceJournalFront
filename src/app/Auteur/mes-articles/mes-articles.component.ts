@@ -4,6 +4,7 @@ import {ArticleService} from '../../services/article.service';
 import {AuteurService} from '../../services/auteur.service';
 import {Article} from '../../model/article.model';
 import {Auteur} from '../../model/auteur.model';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-mes-articles',
@@ -18,15 +19,22 @@ export class MesArticlesComponent implements OnInit {
 etatArticle:string;
   processing:boolean;
   currentStep:number;
-  constructor(private router: Router, private articleService: ArticleService, private auteurService: AuteurService) {
+  constructor(private router: Router, private articleService: ArticleService,
+              private auteurService: AuteurService, private authenticationService: AuthenticationService) {
 
   }
 
   ngOnInit(): void {
-    this.auteurService.getArticleAuteur(1).subscribe((data: any) => {
-      this.articles = data as Array<Article>;
-      console.log(data);
-    }, error => console.log(error));
+    let jwt = this.authenticationService.loadToken();
+    if (jwt){
+      this.auteurService.getArticleAuteur(1).subscribe((data: any) => {
+        this.articles = data as Array<Article>;
+        console.log(data);
+      }, error => console.log(error));
+    }else{
+      this.router.navigateByUrl("/home");
+    }
+
   }
 
   modifier(idArticle: number) {
@@ -116,6 +124,10 @@ this.articleService.getArticleById(idArticle).subscribe(data=>{
 
   goBack(){
     this.mode=1;
+  }
+
+  logout(){
+    this.authenticationService.logout();
   }
 
 }

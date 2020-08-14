@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Article} from '../../model/article.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ArticleService} from '../../services/article.service';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-modifier-article',
@@ -14,15 +15,22 @@ export class ModifierArticleComponent implements OnInit {
   idArticle: number;
   file: any;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private articleService: ArticleService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute,
+              private articleService: ArticleService, private authenticationService: AuthenticationService) {
     this.idArticle = activatedRoute.snapshot.params.idArticle;
   }
 
   ngOnInit(): void {
-    this.articleService.getArticleById(this.idArticle).subscribe(data => {
-      this.article = data as Article;
-      this.getFile();
-    }, error => console.log(error));
+    let jwt = this.authenticationService.loadToken();
+    if (jwt){
+      this.articleService.getArticleById(this.idArticle).subscribe(data => {
+        this.article = data as Article;
+        this.getFile();
+      }, error => console.log(error));
+    }else{
+      this.router.navigateByUrl("/home");
+    }
+
   }
 
   onFileChanged(event) {
@@ -50,4 +58,9 @@ export class ModifierArticleComponent implements OnInit {
       this.file = data;
     }, error => console.log(error));
   }
+
+  logout(){
+    this.authenticationService.logout();
+  }
+
 }

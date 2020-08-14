@@ -3,6 +3,8 @@ import {ArticleService} from '../../services/article.service';
 import {Article} from '../../model/article.model';
 import {Auteur} from '../../model/auteur.model';
 import {AuteurService} from '../../services/auteur.service';
+import {AuthenticationService} from '../../services/authentication.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-ajouter-article',
@@ -15,12 +17,20 @@ export class AjouterArticleComponent implements OnInit {
   article: Article = new Article();
   auteurs: Array<Auteur> = new Array<Auteur>();
 
-  constructor(private articleService: ArticleService, private auteurService: AuteurService) { }
+  constructor(private articleService: ArticleService, private router: Router,
+              private auteurService: AuteurService, private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.auteurService.getAuteurs().subscribe((data: any) => {
-      this.auteurs = data;
-    }, error => console.log(error));
+    let jwt = this.authenticationService.loadToken();
+    if (jwt){
+      this.auteurService.getAuteurs().subscribe((data: any) => {
+        this.auteurs = data;
+      }, error => console.log(error));
+    }else{
+      this.router.navigateByUrl("/home");
+    }
+
+
   }
 
   ajouterArticle(article: any) {
@@ -42,6 +52,10 @@ export class AjouterArticleComponent implements OnInit {
   onFileChanged(event) {
     const file = event.target.files[0];
     this.file = file;
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 
 }

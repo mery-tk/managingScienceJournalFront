@@ -3,6 +3,7 @@ import {Article} from '../../model/article.model';
 import {ArticleService} from '../../services/article.service';
 import {Router} from '@angular/router';
 import {Auteur} from '../../model/auteur.model';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-liste-articles',
@@ -16,13 +17,19 @@ export class ListeArticlesComponent implements OnInit {
   size = 4;
 
 
-  constructor(private router: Router, private articleService: ArticleService) { }
+  constructor(private router: Router, private articleService: ArticleService, private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.articleService.getArticles().subscribe( (data: any) => {
-      this.articles = data;
-      console.log(data);
-    }, error => console.log(error));
+    let jwt = this.authenticationService.loadToken();
+    if (jwt){
+      this.articleService.getArticles().subscribe( (data: any) => {
+        this.articles = data;
+        console.log(data);
+      }, error => console.log(error));
+    }else{
+      this.router.navigateByUrl("/home");
+    }
+
   }
 
   modifier(idArticle: any) {
@@ -43,5 +50,9 @@ export class ListeArticlesComponent implements OnInit {
 
   goToPage(i: number) {
 
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 }

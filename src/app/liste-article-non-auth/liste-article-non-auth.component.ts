@@ -3,6 +3,7 @@ import {Article} from "../model/article.model";
 import {Router} from "@angular/router";
 import {ArticleService} from "../services/article.service";
 import {AuthenticationService} from "../services/authentication.service";
+import {JwtHelper} from 'angular2-jwt';
 
 @Component({
   selector: 'app-liste-article-non-auth',
@@ -19,10 +20,15 @@ export class ListeArticleNonAuthComponent implements OnInit {
   constructor(private router: Router, private articleService: ArticleService,private authenticationService:AuthenticationService) { }
 
   ngOnInit(): void {
-    this.articleService.getArticles().subscribe( (data: any) => {
-      this.articles = data;
-      console.log(data);
-    }, error => console.log(error));
+    let token = this.authenticationService.loadToken();
+    if(token) {
+      this.articleService.getArticles().subscribe((data: any) => {
+        this.articles = data;
+        console.log(data);
+      }, error => console.log(error));
+    }else{
+      this.router.navigateByUrl("/home");
+    }
   }
 
 
