@@ -54,9 +54,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let a of articles;" class="clickable" >
-              <td>{{a.titre}}</td>
-              <td>{{auteur[a.idArticle]?.nom}} {{auteur[a.idArticle]?.prenom}}</td>
+            <tr *ngFor="let a of articles;" class="clickable"  >
+              <td  >{{a.titre}}</td>
+              <td >{{auteur[a.idArticle]?.nom}} {{auteur[a.idArticle]?.prenom}}</td>
               <td>
                 <ul>
                   <li *ngFor="let auteur of co_auteurs[a.idArticle]">{{auteur?.nom}} {{auteur?.prenom}}</li>

@@ -15,6 +15,7 @@ import {JwtHelper} from 'angular2-jwt';
 export class InfoReduitArticleComponent implements OnInit {
 
   articles: Array<Article> = new Array<Article>();
+  articles1: Array<Article> = new Array<Article>();
   currentPage: number = 0;
   pageArticles:any;
   motCle:string="";
@@ -50,8 +51,18 @@ export class InfoReduitArticleComponent implements OnInit {
 	     this.articleService.chercherArticleParMotCle(motCle,this.currentPage,this.size)
       .subscribe(data =>{
         this.pageArticles=data;
-         this.articles = this.pageArticles?.content;
+         this.articles1 = this.pageArticles?.content;
+		 
+         for(let a of this.articles1){
+           if(a.etat=="Accepté"){
+			   this.articles.push(a); 
+           }
+         }
+		
+
+
         for (let article of this.articles) {
+
           this.co_auteurs[article.idArticle] = new Array<Auteur>()
           this.articleService.getAuteursArticle(article.idArticle).subscribe((data: any) => {
             let auteurs = data;

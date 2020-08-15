@@ -12,6 +12,7 @@ import {AuthenticationService} from '../../services/authentication.service';
 })
 export class ListeArticlesComponent implements OnInit {
   articles: Array<Article> = new Array<Article>();
+  articles1: Array<Article> = new Array<Article>();
   pages: any;
   currentPage: number = 0;
   size = 4;
@@ -23,7 +24,12 @@ export class ListeArticlesComponent implements OnInit {
     let jwt = this.authenticationService.loadToken();
     if (jwt){
       this.articleService.getArticles().subscribe( (data: any) => {
-        this.articles = data;
+        this.articles1=data
+        for(let a of this.articles1){
+          if(a.etat=="Accepté"){
+            this.articles.push(a);
+          }
+        }
         console.log(data);
       }, error => console.log(error));
     }else{
