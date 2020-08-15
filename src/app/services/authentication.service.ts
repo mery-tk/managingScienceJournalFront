@@ -12,6 +12,7 @@ export class AuthenticationService {
 
   }
   login(user){
+    localStorage.setItem("us",user.username);
     return this.http.post(this.host+"/login",user,{observe:'response'});
   }
 
@@ -26,6 +27,7 @@ export class AuthenticationService {
     localStorage.setItem("token",jwt);
     let jwtHelper = new JwtHelper();
     this.roles=jwtHelper.decodeToken(this.jwtToken).roles;
+
   }
 
 

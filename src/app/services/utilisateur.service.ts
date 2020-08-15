@@ -10,5 +10,8 @@ export class UtilisateurService {
     return this.http.post('http://localhost:8080/utilisateurs', utilisateur);
   }
 
+  getUserByUsername(username: string){
+    return this.http.get('http://localhost:8080/utilisateur?username='+username);
+  }
 
 }
