@@ -37,8 +37,7 @@
               <td>{{a.titre}}</td>
               <td>{{a.affiliations}}</td>
               <td>{{a.motCle}}</td>
-              <td><a class="clickable " routerLink=""  (click)="modifier(a.idArticle)"><span class="glyphicon glyphicon-edit"></span></a></td>
-              <td><a class="clickable " routerLink="" (click)="supprimer(a)" ><span class="glyphicon glyphicon-trash"></span></a></td>
+
               <td><a class="clickable " routerLink="{{a.idArticle}}/details">Plus de details<span class="glyphicon glyphicon-circle-arrow-right"></span></a></td>
             </tr>
             </tbody>

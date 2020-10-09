@@ -24,7 +24,7 @@ import {LoginComponent} from "./login/login.component";
 
 
 const routes: Routes = [
-  {path:'',redirectTo:'/home',pathMatch:'full'},//
+  {path:'',redirectTo:'utilisateur/articles',pathMatch:'full'},//
   {path: 'articles', component: ListeArticlesComponent},//
   {path: 'articles/:idArticle/details', component: DetailsArticleComponent},//
   {path: 'home/:idArticle/auteurs',component:InfoReduitAuteurComponent},//

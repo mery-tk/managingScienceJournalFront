@@ -20,6 +20,10 @@ export class ArticleService {
   updateArticle(idArticle: number, article: FormData) {
     return this.http.put('http://localhost:8080/articles/'+idArticle, article);
   }
+  update(article:Article){
+
+    return this.http.put('http://localhost:8080/articless/'+article.idArticle,article);
+  }
 
   daleteArticle(idArticle: number){
     return this.http.delete('http://localhost:8080/articles/'+idArticle);
